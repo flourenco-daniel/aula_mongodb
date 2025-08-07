@@ -1,6 +1,6 @@
 from pymongo import MongoClient
 
-def connection(host, port, database, colecao, documento):
+def connection(host, port, database, colecao, dados_a_inserir):
 
     try:
         host = host
@@ -11,7 +11,7 @@ def connection(host, port, database, colecao, documento):
         db = client.database
         collection = db.colecao
 
-        documento = documento
+        documento = dados_a_inserir
         resultado_insercao = collection.insert_many(documento)
         print(f"Documento inserido com ID: {resultado_insercao.inserted_ids}")
 
