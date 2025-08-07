@@ -8,8 +8,8 @@ def connection(host, port, database, colecao, dados_a_inserir):
         client = MongoClient(f'mongodb://{host}:{port}/')
         client.admin.command('ismaster')
         print(f"Conexão com ")
-        db = client.database
-        collection = db.colecao
+        db = client[database]
+        collection = db[colecao]
 
         documento = dados_a_inserir
         resultado_insercao = collection.insert_many(documento)
